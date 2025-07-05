@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vertical Tab Navigation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #e8f0fe;
+    }
+
+    h2 {
+      text-align: center;
+      padding: 20px;
+      color: #1a237e;
+    }
+
+    .tab-container {
+      display: flex;
+      max-width: 900px;
+      margin: auto;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      background: #ffffff;
+    }
+
+    .tab-bar {
+      display: flex;
+      flex-direction: column;
+      width: 220px;
+      background-color: #1a237e;
+    }
+
+    .tab-bar button {
+      background-color: inherit;
+      border: none;
+      outline: none;
+      font-weight: bold;
+      padding: 16px;
+      color: #fff;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .tab-bar button:hover {
+      background-color: #5c6bc0;
+    }
+
+    .tab-bar button.active {
+      background-color: #3949ab;
+    }
+
+    .tab-content {
+      flex: 1;
+      display: none;
+      padding: 25px;
+      background-color: #f5f7fb;
+      color: #333;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .tab-container {
+        flex-direction: column;
+      }
+
+      .tab-bar {
+        flex-direction: row;
+        width: 100%;
+      }
+
+      .tab-bar button {
+        flex: 1;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Navigation tabbed</h2>
+
+  <div class="tab-container">
+    <div class="tab-bar">
+      <button class="tablink active" onclick="openTab(event, 'HTML')">HTML Basics</button>
+      <button class="tablink" onclick="openTab(event, 'CSS')">CSS Styling</button>
+      <button class="tablink" onclick="openTab(event, 'JS')">JavaScript Logic</button>
+      <button class="tablink" onclick="openTab(event, 'Responsive')">Responsive Design</button>
+    </div>
+
+    <div id="HTML" class="tab-content active">
+      <h3>HTML Basics</h3>
+      <p>HTML is the standard markup language used to create web pages. It uses tags like &lt;div&gt;, &lt;p&gt;, &lt;img&gt;, and more.</p>
+    </div>
+
+    <div id="CSS" class="tab-content">
+      <h3>CSS Styling</h3>
+      <p>CSS controls the layout and appearance of HTML elements. Use it for colors, spacing, fonts, and responsiveness.</p>
+    </div>
+
+    <div id="JS" class="tab-content">
+      <h3>JavaScript Logic</h3>
+      <p>JavaScript adds interactivity to websites. You can use it to validate forms, show popups, change styles dynamically, and much more.</p>
+    </div>
+
+    <div id="Responsive" class="tab-content">
+      <h3>Responsive Design</h3>
+      <p>Responsive design ensures your site works on all screen sizes using media queries, flexible layouts, and percentages.</p>
+    </div>
+  </div>
+
+  <script>
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+  </script>
+
+</body>
+</html>
